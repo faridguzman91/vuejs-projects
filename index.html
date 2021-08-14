@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>vue1</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <div id="app">
+        <div class="product">
+
+            <div class="product-image">
+
+                <img v-bind:src="image" alt="">
+                <a v-bind:href="link">click here</a>
+            </div>
+
+            <div class="product-info">
+                <h1>{{ product }}</h1>
+                <h2>Description: {{ description }}</h2>
+
+                <p v-if="inventory > 10">in stock</p>
+
+                <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out</p>
+                <p v-else>out of stock</p>
+                <span v-if="onSale">On sale!</span>
+
+                <ul>
+                    <li v-for="detail in details">{{ detail }}</li>
+                </ul>
+
+                <div v-for="variant in variants" :key="variant.variantId">
+                    <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
+                    <ul>
+                        <li v-for="size in sizes">size: {{ size }} </li>
+                    </ul>
+
+                </div>
+
+                <button v-on:click="addToCart">Add to cart</button>
+
+                <div class="cart">
+                    <p>Cart ({{ cart }})</p>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="/js/app.js" async defer></script>
+
+</body>
+
+</html>
