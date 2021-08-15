@@ -20,53 +20,11 @@
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
+    <div class="nav-bar"></div>
     <div id="app">
-        <div class="product">
-
-            <div class="product-image">
-
-                <img v-bind:src="image" alt="">
-                <a v-bind:href="link">click here</a>
-            </div>
-
-            <div class="product-info">
-                <h1>{{ title }}</h1>
-                <h2>Description: {{ description }}</h2>
-
-                <p v-if="inventory > 10">in stock</p>
-
-                <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out</p>
-                <p v-else>out of stock</p>
-                <span v-if="onSale">On sale!</span>
-
-                <ul>
-                    <li v-for="detail in details">{{ detail }}</li>
-                </ul>
-
-                <div v-for="(variant, index) in variants" :key="variant.variantId" class="color-box" :style="{ backgroundColor: variant.variantColor }" @mouseover="updateProduct(index)">
-
-                    <!--<ul>
-                        <li v-for="size in sizes">size: {{ size }} </li>
-                    </ul>-->
-
-                </div>
-
-                <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to cart</button>
-
-                <div class="cart">
-                    <p>Cart ({{ cart }})</p>
-                </div>
-
-                <button v-on:click="removeFromCart">
-                    <p>Remove from Cart{{ cart }}</p>
-                </button>
-
-
-
-            </div>
-
-        </div>
+        <product>
+            <div class="product"></div>
+        </product>
 
 
     </div>
