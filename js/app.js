@@ -10,7 +10,7 @@ var app = new Vue({
         onSale: true,
         details: ["80% cotton", "20% polyester", "Gender-neutral"],
         variants: [{
-                variandI: 2234,
+                variantId: 2234,
                 variantColor: "green",
                 variantImage: "./img/green.jpg"
             },
@@ -29,6 +29,9 @@ var app = new Vue({
         },
         updateProduct: function(variantImage) {
             this.image = variantImage
+        },
+        removeFromCart: function() {
+            this.cart -= 1
         }
     },
 
